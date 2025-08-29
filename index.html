@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animación del Sol</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #222;
+    margin: 0;
+  }
+
+  .container {
+    position: relative;
+    width: 300px;  /* ajusta según tu imagen */
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .cara {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .sol {
+    position: absolute;
+    top: 40px; /* ajusta la altura en la frente */
+    left: 60px; /* posición inicial (modo oscuro) */
+    width: 60px;
+    height: 60px;
+    transition: left 1s cubic-bezier(0.68,-0.55,0.27,1.55), transform 1s ease;
+  }
+
+  /* Al hacer clic, movemos el sol */
+  .active .sol {
+    left: 180px; /* posición nueva (modo claro) */
+    transform: rotate(360deg) scale(1.2);
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="switch">
+  <!-- Imagen de la cara -->
+  <img src="cara.png" alt="Cara" class="cara">
+
+  <!-- Imagen del sol recortado -->
+  <img src="sol.png" alt="Sol" class="sol">
+</div>
+
+<script>
+  const switcher = document.getElementById("switch");
+  switcher.addEventListener("click", () => {
+    switcher.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>
